@@ -3,7 +3,7 @@
     <nuxt-link to="/posts/categories/food">Food</nuxt-link>
     <nuxt-link to="/posts/categories/random">Random</nuxt-link>
     <div class="posts-page">
-      <PostList :posts="loadedPosts"/>
+      <PostList :posts="loadCategoryPosts"/>
     </div>
   </div>
 </template>
@@ -16,8 +16,8 @@ export default {
     PostList
   },
   computed: {
-    loadedPosts() {
-      return this.$store.getters.loadedPosts;
+    loadCategoryPosts() {
+      return this.$store.getters.loadCategoryPosts("food");
     }
   }
 };
