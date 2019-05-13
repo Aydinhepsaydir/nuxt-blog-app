@@ -2,6 +2,7 @@
   <div class="admin-post-page">
     <section class="update-form">
       <AdminPostForm :post="loadedPost"/>
+      <i class="material-icons" @click="onDelete">delete</i>
     </section>
   </div>
 </template>
@@ -28,6 +29,11 @@ export default {
         };
       })
       .catch(e => context.error(e));
+  },
+  methods: {
+    onDelete() {
+      this.$store.dispatch("");
+    }
   }
 };
 </script>
