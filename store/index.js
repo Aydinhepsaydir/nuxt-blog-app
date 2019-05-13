@@ -31,6 +31,9 @@ const createStore = () => {
     getters: {
       loadedPosts(state) {
         return state.loadedPosts;
+      },
+      loadCategoryPosts: state => category => {
+        return state.loadedPosts.filter(post => post.category == category);
       }
     }
   });

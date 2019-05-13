@@ -2,7 +2,7 @@
   <div class="container">
     <TheCategoriesNav/>
     <div class="posts-page">
-      <PostList :posts="loadedPosts"/>
+      <PostList :posts="loadCategoryPosts"/>
     </div>
   </div>
 </template>
@@ -17,8 +17,8 @@ export default {
     TheCategoriesNav
   },
   computed: {
-    loadedPosts() {
-      return this.$store.getters.loadedPosts;
+    loadCategoryPosts() {
+      return this.$store.getters.loadCategoryPosts("food");
     }
   }
 };

@@ -8,6 +8,7 @@
       :is-admin="isAdmin"
       :previewText="post.previewText"
       :thumbnail="post.thumbnail"
+      :category="post.category"
     />
   </section>
 </template>

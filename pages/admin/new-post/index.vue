@@ -9,6 +9,7 @@
 <script>
 import AdminPostForm from "@/components/Admin/AdminPostForm.vue";
 import axios from "axios";
+
 export default {
   layout: "admin",
   components: {
@@ -17,7 +18,10 @@ export default {
   methods: {
     onSubmitted(postData) {
       axios
-        .post("https://foodie-news.firebaseio.com/posts.json", postData)
+        .post("https://foodie-news.firebaseio.com/posts.json", {
+          ...postData,
+          updatedDate: new Date()
+        })
         .then(result => console.log(result))
         .catch(e => context.error(e));
     }
