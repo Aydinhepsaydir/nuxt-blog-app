@@ -1,7 +1,6 @@
 <template>
   <div class="container">
-    <nuxt-link to="/posts/category/food">Food</nuxt-link>
-    <nuxt-link to="/posts/category/random">Random</nuxt-link>
+    <TheCategoriesNav/>
     <div class="posts-page">
       <PostList :posts="loadedPosts"/>
     </div>
@@ -10,10 +9,12 @@
 
 <script>
 import PostList from "~/components/Posts/PostList.vue";
+import TheCategoriesNav from "~/components/Navigation/TheCategoriesNav.vue";
 
 export default {
   components: {
-    PostList
+    PostList,
+    TheCategoriesNav
   },
   computed: {
     loadedPosts() {

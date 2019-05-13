@@ -8,30 +8,35 @@
 
 <script>
 import AdminPostForm from "@/components/Admin/AdminPostForm.vue";
+import axios from "axios";
 
 export default {
   layout: "admin",
   components: {
     AdminPostForm
   },
-  data() {
-    return {
-      loadedPost: {
-        author: "Aydin",
-        title: "Donuts!",
-        content: "Some really nice lookin' donuts",
-        thumbnailLink: "https://media.npr.org/assets/img/2017/06/09/img_1210_custom-42a7d8b55991938569dd446133e41c67eac56e3a-s800-c85.jpg"
-      }
-    };
+  asyncData(context) {
+    return axios
+      .get(
+        "https://foodie-news.firebaseio.com/posts/" +
+          context.params.postId +
+          ".json"
+      )
+      .then(res => {
+        return {
+          loadedPost: res.data
+        };
+      })
+      .catch(e => context.error(e));
   }
 };
 </script>
 
 <style scoped>
 .update-form {
-   width: 90%;
-   margin: 20px auto;
- }
+  width: 90%;
+  margin: 20px auto;
+}
 @media (min-width: 768px) {
   .update-form {
     width: 500px;
