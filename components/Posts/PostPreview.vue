@@ -33,11 +33,17 @@ export default {
     isAdmin: {
       type: Boolean,
       required: true
+    },
+    category: {
+      type: String,
+      required: true
     }
   },
   computed: {
     postLink() {
-      return this.isAdmin ? "/admin/" + this.id : "/posts/" + this.id;
+      return this.isAdmin
+        ? "/admin/" + this.id
+        : "/posts/category/" + this.category + "/" + this.id;
     }
   }
 };

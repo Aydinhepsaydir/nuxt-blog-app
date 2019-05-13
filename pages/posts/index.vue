@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <nuxt-link to="/posts/categories/food">Food</nuxt-link>
-    <nuxt-link to="/posts/categories/random">Random</nuxt-link>
+    <nuxt-link to="/posts/category/food">Food</nuxt-link>
+    <nuxt-link to="/posts/category/random">Random</nuxt-link>
     <div class="posts-page">
       <PostList :posts="loadedPosts"/>
     </div>
