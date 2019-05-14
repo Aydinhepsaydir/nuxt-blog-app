@@ -29,12 +29,12 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: "#fff" },
+  loading: { color: "#ff0000", height: "4px", duration: 5000 },
 
   /*
    ** Global CSS
    */
-  css: [],
+  css: ["~/assets/styles/main.css"],
 
   /*
    ** Plugins to load before mounting the App
@@ -54,5 +54,9 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  transition: {
+    name: "fade",
+    mode: "out-in"
   }
 };

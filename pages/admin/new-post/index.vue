@@ -17,13 +17,9 @@ export default {
   },
   methods: {
     onSubmitted(postData) {
-      axios
-        .post("https://foodie-news.firebaseio.com/posts.json", {
-          ...postData,
-          updatedDate: new Date()
-        })
-        .then(result => console.log(result))
-        .catch(e => context.error(e));
+      this.$store
+        .dispatch("addPost", postData)
+        .then(() => this.$router.push("/admin"));
     }
   }
 };

@@ -1,7 +1,7 @@
 <template>
   <div class="admin-post-page">
     <section class="update-form">
-      <AdminPostForm :post="loadedPost"/>
+      <AdminPostForm :post="loadedPost" @submit="onSubmitted"/>
       <i class="material-icons" @click="onDelete">delete</i>
     </section>
   </div>
@@ -25,14 +25,21 @@ export default {
       )
       .then(res => {
         return {
-          loadedPost: res.data
+          loadedPost: { ...res.data, id: context.params.postId }
         };
       })
       .catch(e => context.error(e));
   },
   methods: {
+    onSubmitted(editedPost) {
+      this.$store
+        .dispatch("editPost", editedPost)
+        .then(() => this.$router.push("/admin"));
+    },
     onDelete() {
-      this.$store.dispatch("");
+      this.$store
+        .dispatch("deletePost", { id: this.loadedPost.id })
+        .then(() => this.$router.push("/admin"));
     }
   }
 };
